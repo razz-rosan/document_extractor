@@ -1,0 +1,9 @@
+Act as an document analyzer. Given the following document content and the user's instruction, extract only the relevant information clearly and Correctly. If you find somthing which is not fonnd in the given Document then simply give output "Your input context is not found"
+
+DOCUMENT:
+{document}
+
+INSTRUCTION:
+{instruction}
+
+EXTRACTED DATA:
