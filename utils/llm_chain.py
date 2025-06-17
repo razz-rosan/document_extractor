@@ -14,7 +14,7 @@ with open("prompts/extraction_prompt.txt", "r") as f:
 
 prompt = PromptTemplate.from_template(prompt_template)
 
-# Function to call Mistral
+
 def mistral_api_call(prompt_text):
     url = "https://api.mistral.ai/v1/chat/completions"
     headers = {
@@ -31,7 +31,7 @@ def mistral_api_call(prompt_text):
     res.raise_for_status()
     return res.json()["choices"][0]["message"]["content"]
 
-# LangChain-style chain
+
 def get_chain():
     return (
         RunnableMap({

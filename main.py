@@ -4,25 +4,12 @@ from utils.llm_chain import get_chain
 
 chain = get_chain()
 
-# def extract_info(file, instruction):
-#     if file is None or instruction.strip() == "":
-#         return "Please upload a file and provide instructions."
-    
-#     content = file.read()
-#     filename = file.name
-#     try:
-#         text = extract_text(content, filename)
-#     except Exception as e:
-#         return f"Error reading file: {e}"
-    
-#     result = chain.invoke({"document": text, "instruction": instruction})
-#     return result
 
 def extract_info(file, instruction):
     if file is None or instruction.strip() == "":
         return "Please upload a file and provide instructions."
     
-    filename = file.name  # Gradio gives correct name now
+    filename = file.name  
     try:
         text = extract_text(file, filename)
     except Exception as e:
@@ -37,7 +24,7 @@ def extract_info(file, instruction):
 with gr.Blocks() as demo:
     gr.Markdown("# 📄 Document Information Extractor with Mistral + LangChain")
     with gr.Row():
-        #file = gr.File(label="Upload your Document (PDF, DOCX, TXT)")
+        
         file = gr.File(label="Upload your Document (PDF, DOCX, TXT, JPG, PNG)", file_types=[".pdf", ".docx", ".txt", ".jpg", ".jpeg", ".png"])
         instruction = gr.Textbox(lines=2, label="What do you want to extract?")
     output = gr.Textbox(lines=10, label="Extracted Information")

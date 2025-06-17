@@ -4,7 +4,7 @@ import pytesseract
 from PIL import Image
 import io
 
-# Set path to tesseract executable (only needed on Windows)
+# Setting tesseract to executable path
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"  # adjust if needed
 
 def extract_text_from_pdf(file):
@@ -31,7 +31,7 @@ def extract_text(file, filename: str):
     elif filename.endswith((".jpg", ".jpeg", ".png")):
         return extract_text_from_image(file)
     else:
-        # 🔥 Try content-type fallback if extension fails
+        
         try:
             content_type = file.type  # e.g., 'image/png'
             if content_type == "application/pdf":
